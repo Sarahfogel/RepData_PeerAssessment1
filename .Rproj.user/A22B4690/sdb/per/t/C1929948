@@ -1,0 +1,17 @@
+{
+    "contents" : "# Read in the data\n    filepath<-getwd()\n    activity<-read.csv(file=paste(filepath,\"activity.csv\", sep=\"/\"))\n    activity$date<-as.Date(activity$date)\n# Explore it a little\n    summary(activity)\n    str(activity)\n",
+    "created" : 1420755779411.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "592034422",
+    "id" : "C1929948",
+    "lastKnownWriteTime" : 1420757021,
+    "path" : "~/Coursera Courses/Reproducible Research/RR Course Proj 1/RRProj1.R",
+    "project_path" : "RRProj1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

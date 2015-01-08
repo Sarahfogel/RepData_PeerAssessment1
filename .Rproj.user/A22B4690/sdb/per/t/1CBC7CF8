@@ -1,0 +1,17 @@
+{
+    "contents" : "---\ntitle: \"Reproducible Research Course Project 1\"\nauthor: \"Sarah Fogel\"\ndate: \"Thursday, January 08, 2015\"\noutput: html_document\n---\nThis document assumes that you have the data downloaded and unzipped into your working directory.\n\n###Loading and Preprocessing the Data\nBegin by reading in the data.  Then convert the date column into a date format in R.\n```{r, echo=TRUE}\nactivity<-read.csv(\"activity.csv\")\n\n```\n\nYou can also embed plots, for example:\n\n```{r, echo=FALSE}\nplot(cars)\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "created" : 1420755799431.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "366294525",
+    "id" : "1CBC7CF8",
+    "lastKnownWriteTime" : 1420757010,
+    "path" : "~/Coursera Courses/Reproducible Research/RR Course Proj 1/RRProj1.Rmd",
+    "project_path" : "RRProj1.Rmd",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
