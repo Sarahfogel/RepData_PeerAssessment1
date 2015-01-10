@@ -29,4 +29,18 @@
     
     #Count the number of rows with N/As
     sum(!complete.cases(activity))
+    
+    #create new data frame with N/As replaced with avg value for that interval
+    activity.complete<-activity
+    
+    for (i in 1:length(activity$steps)){
+        
+        if (is.na(activity.complete$steps[i])) {
+            interval<-as.character(activity.complete$interval[i])
+            activity.complete$steps[i]<-mean.per.interval[interval]
+        }
+        
+    }
 
+    summary(activity.complete)
+    summary(activity)

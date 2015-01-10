@@ -63,10 +63,64 @@ First count the number of missing values.
 sum(!complete.cases(activity))
 ```
 
-```
-## [1] 2304
+[1] 2304
+
+Since most of the missing values are entire missing days of data, I have chosen to replace them with the mean across all days of the interval in which they appear rather than the mean of that day.
+
+First, make a copy of the data frame.  Then replace each N/A with the average for the interval in which it appears
+
+
+```r
+   activity.complete<-activity
+    
+    for (i in 1:length(activity$steps)){
+        
+        if (is.na(activity.complete$steps[i])) {
+            interval<-as.character(activity.complete$interval[i])
+            activity.complete$steps[i]<-mean.per.interval[interval]
+        }
+    }
 ```
 
-Since most of the missing values are entire missing days of data, I have chosen to replace them with the mean across all days of the interval in which they appear.
 
+Now, we recreate the analysis from part 1 on this new data frame and compare it to the old results:
+
+First, compare histograms of the total number of steps each day.
+
+```r
+split.complete.steps<-split(activity.complete$steps, activity$date)
+complete.steps.per.day<-sapply(split.complete.steps, sum)
+par(mfrow=c(1,2))
+hist(complete.steps.per.day, col="steelblue", main="Histogram of Total Steps per Day (N/As Imputed)", xlab="Steps per Day")
+hist(steps.per.day, col="steelblue", main="Histogram of Total Steps per Day", xlab="Steps per Day", ylim=c(0, 35))
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+We can see here that the histogram is generally a similar shape, but that the middle bin (or bar, if you prefer) is higher/ more frequent.
+
+Now we compare the means and medians of the two distributions.
+
+```r
+paste0("Mean (ignore NA's) = ", round(mean(steps.per.day, na.rm=TRUE), 2)); paste0("Mean (impute NA's) = ", round(mean(complete.steps.per.day, na.rm=TRUE), 2))
+```
+
+```
+## [1] "Mean (ignore NA's) = 10766.19"
+```
+
+```
+## [1] "Mean (impute NA's) = 10766.19"
+```
+
+```r
+paste0("Median (ignore NAs) = ", median(steps.per.day, na.rm=TRUE));paste0("Median (impute NA's) = ", round(median(complete.steps.per.day, na.rm=TRUE), 2))
+```
+
+```
+## [1] "Median (ignore NAs) = 10765"
+```
+
+```
+## [1] "Median (impute NA's) = 10766.19"
+```
 ## Are there differences in activity patterns between weekdays and weekends?
