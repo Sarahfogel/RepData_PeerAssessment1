@@ -1,4 +1,4 @@
-## Find the final product under PA1_template.html
+## Find the final product under PA1_template.html or PA1_template.md
 
 ## Introduction
 
