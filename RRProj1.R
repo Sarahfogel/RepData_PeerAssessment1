@@ -44,3 +44,27 @@
 
     summary(activity.complete)
     summary(activity)
+    
+    
+    
+    day.factor[weekdays=="Saturday" | weekdays == "Sunday"]<-"weekend"
+    
+    head(split.weekdays$weekday[2])
+    
+    f<-function(x) split(x[,1], x[,2])
+    f(split.weekdays$weekday)
+    
+    split(split.weekdays$weekday[,1], as.factor(split.weekdays$weekday[,2]))
+    
+    split.days.intervals<-lapply(split.weekdays,FUN= f)
+    mean.per.interval<-sapply(split.by.interval, mean, na.rm=TRUE)
+    
+    
+    
+    
+    day.means.interval.data<-data.frame(
+        int=c(names(mean.per.interval.weekday), names(mean.per.interval.weekend)), 
+        means=c(mean.per.interval.weekday, mean.per.interval.weekend), 
+        day=c(rep("weekday", length(mean.per.interval.weekday)), rep("weekdend", length(mean.per.interval.weekend))))
+    
+    
